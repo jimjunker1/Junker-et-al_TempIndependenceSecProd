@@ -62,28 +62,13 @@ AIC of GPP + temp ~ 2$^\circ$ Production = 63.42
 AIC of GPP * temp ~ 2$^\circ$ Production = 63.77
 
 
-Selecting among these models suggests that temperature does add information to the model, but temperature doesn't have any interactive effect with GPP as evidenced from the anova table: 
+Selecting among these models suggests that temperature does add information to the model, but temperature doesn't have any interactive effect with GPP. 
 
 
-```
-## Data: warming_df
-## Models:
-## gpp_lm: log(prod_d_new/1000) ~ log(EstGPP_gCm2d_med/days) + (1 | SITE)
-## gpp_temp_lm: log(prod_d_new/1000) ~ log(EstGPP_gCm2d_med/days) + tempkt_center + 
-## gpp_temp_lm:     (1 | SITE)
-## warming_full: log(prod_d_new/1000) ~ log(EstGPP_gCm2d_med/days) + tempkt_center + 
-## warming_full:     log(EstGPP_gCm2d_med/days):tempkt_stand + (1 | SITE)
-##              npar    AIC    BIC  logLik deviance  Chisq Df Pr(>Chisq)    
-## gpp_lm          4 72.367 76.732 -32.184   64.367                         
-## gpp_temp_lm     5 62.528 67.983 -26.264   52.528 11.839  1  0.0005799 ***
-## warming_full    6 63.439 69.985 -25.719   51.439  1.089  1  0.2966925    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-```
 
 ![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/warming v gpp-1.png)<!-- -->
 
-Some of the residual variation suggests unaccounted for temperature dependence.
+Some of the residual variation suggests unaccounted for temperature dependence of ~1.3 eV. This should in theory be 0 eV.
 
 
 ```
@@ -125,7 +110,7 @@ Some of the residual variation suggests unaccounted for temperature dependence.
 
 ## Modeling GPP in st7 & oh2
 
-This option is another way to capture the seasonal dynamics of resource production and compare estimated flux with flux and it has the advantage of being applicable across the temperature gradient. It assumes we can apply the temperature and light dependencies in st7 and oh2 across the whole gradient. But it looks like we can do a decent job of capturing the patterns of GPP in st7 and oh2 with temperature and light. I am hesistant to not include a model with chlorophyll *a*, but it appears to not do much. Further, when chlorophyll is included, the estimated GPP across the gradient is unrealistically high in Hver, peaking at ~1000 g C m-2 d-1.
+This option is another way to capture the seasonal dynamics of resource production and compare estimated flux with flux and it has the advantage of being applicable across the temperature gradient. It assumes we can apply the temperature and light dependencies in st7 and oh2 across the whole gradient. But it looks like we can do a decent job of capturing the patterns of GPP in st7 and oh2 with temperature and light. I am hesistant to not include a model with chlorophyll *a*, but it appears to not do much. Further, when chlorophyll is included, the estimated GPP across the gradient is unrealistically high in Hver, peaking at ~1000 g C m^-2^ d^-1^.
 
 ![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/gpp model-1.png)<!-- -->
 
@@ -173,6 +158,10 @@ Here I simulated variability around daily GPP by randomly generating some values
 The I estimated mean daily interval GPP for simulated daily GPP-series and fit the same linear model above to estimate variability in the within-stream temperature dependence of GPP. These extracted coefficients were then used to 'correct' the estimated temperature dependence of secondary production within all streams (Ea[GPP] - Ea[2P]). This leaves the following estimates of temperature depdendence of secondary production after we account for resource turnover. 
 
 ![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/EA correcting-1.png)<!-- -->
+
+Here is an evolving look at Resource-corrected 2P ~ temperature:
+
+![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/temp Ea corr-1.png)<!-- -->
 
 ## Predictive model from Warming streams {#warming_pred}
 
