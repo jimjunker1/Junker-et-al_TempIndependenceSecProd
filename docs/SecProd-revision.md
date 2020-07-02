@@ -95,7 +95,7 @@ Some of the residual variation suggests unaccounted for temperature dependence o
 
 ## Modeling GPP in st7 & oh2
 
-This option is another way to capture the seasonal dynamics of resource production and compare estimated flux with flux and it has the advantage of being applicable across the temperature gradient. It assumes we can apply the temperature and light dependencies in st7 and oh2 across the whole gradient. But it looks like we can do a decent job of capturing the patterns of GPP in st7 and oh2 with temperature and light. I am hesistant to not include a model with chlorophyll *a*, but it appears to not do much. Further, when chlorophyll is included, the estimated GPP across the gradient is unrealistically high in Hver, peaking at ~1000 g C $m^{-2} d^{-1}$.
+This option is another way to capture the seasonal dynamics of resource production and compare estimated flux with flux and it has the advantage of being applicable across the temperature gradient. It assumes we can apply the temperature and light dependencies in st7 and oh2 across the whole gradient. But it looks like we can do a decent job of capturing the patterns of GPP in st7 and oh2 with temperature and light. I am hesistant to not include a model with chlorophyll *a*, but it appears to not do much. Further, when chlorophyll is included, the estimated GPP across the gradient is unrealistically high in Hver, peaking at ~1000 g C m^-2 d^-1.
 
 ![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/gpp model-1.png)<!-- -->![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/gpp model-2.png)<!-- -->
 
@@ -103,7 +103,7 @@ This model suggests the temperature dependence of GPP, after accounting for ligh
 
 I had two ideas about how to go from here:
 
-## Correcting within-stream Ea_{2P} by estimated within-stream Ea_{GPP} {#Ea_corr}
+## Correcting within-stream Ea[2P] by estimated within-stream Ea[GPP] {#Ea_corr}
 
 In this case, we model the temperature dependence of GPP from st7 & oh2. We then correct the slope of 2$^\circ$ production by this value as a resource-corrected temperature dependence.
 
