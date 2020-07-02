@@ -17,12 +17,25 @@ output:
 ---
 
 
+# Primer
+
+The main thrust of the paper stands on these equations (which I know y'all are familiar):
+If 2$^\circ$ Production is the product of population biomass and biomass turnover (P:B)
+
+$$2^\circ Production= B * P:B$$
+And MTE predicts biomass as:
+$$ B = [R] M^{0.25}*e^{E_a/kT}$$
+and biomass turnover as:
+$$ P:B = M^{-0.25}*e^{-E_a/kT}$$
+This leads to the prediction that:
+$$2^\circ Production=[R]$$
+where, *[R]* is a generic resource term. We assume this to mean resource supply (energy) and that 2$^\circ$ production scales linearly with resource supply. As such, we should be able to account for the vast majority of the variation in 2$^\circ$ production by accounting for resource supply. Further, we expect no systematic variation associated with temperature at either timescale. A true measure of resource supply is hard to nail down, ideally it would be resource production, rather than a standing stock. Second, it would also include only production that is available to consumers. This is generally unreasonable to measure at the level of the ecosystem for all consumers, so we make some simplifying assumptions.
 
 # Review outline
 
-Generally, the reviews were positive. There was one comment on the use of chlorophyll a as a proxy, which would apply to both timescales. But, the reviewers seems okay with mean chla at the annual scale. Further, it has good explanatory power for secondary production and has a scaling exponent of ~1. This fits well with the model that *P* ~ *[R]* linearly and that integrating the monthly biomass measurements captures the differences in resource production across streams.
+The most substantive comments revolved around the use of chlorophyll *a* as a proxy, which would apply to both timescales. The reviewers seemed okay with mean chlorophyll *a* at the annual scale. It has good explanatory power and 2$^\circ$ production scales with an exponent of ~1. This fits well with the model that *P* ~ *[R]* linearly. This suggests that integrating the monthly chlorophyll *a* biomass measurements captures the differences in resource production across streams at the annual scale. This is also supported if we use published models to estimate [GPP](#morin_annual). 
 
-The main criticism from reviews was reconciling the apparent temperature dependence of secondary production at seasonal time scales. Here, the differences in resource turnover due to seasonal temperatures and light availability make chla a poor proxy for resource production. Since we do not have production across the gradient, we make a weak inference in the paper that the temperature dependence of secondary production falls within the range probable for the temperature dependence of basal resource production. This leaves the reader to question the results and weakens the conclusions in the title and abstract that secondary production on seasonal and annual timescales is temperature independent. This is likely a problem of my explanation lacking clarity, but it is also not straightforward as presented because reviewers were expecting us to show a slope of zero at both timescales. 
+The main criticism from reviews was reconciling the apparent temperature dependence of secondary production at seasonal time scales. Here, the differences in resource turnover due to seasonal temperatures and light availability make chlorophyll *a* poor proxy for resource production. Since we do not have production across the gradient, we make a weak inference in the paper that the temperature dependence of secondary production falls within the range probable for the temperature dependence of basal resource production. This leaves the reader to question the results and weakens the conclusions in the title and abstract that secondary production is temperature independent on seasonal and annual timescales. This is likely a problem of my explanation lacking clarity, but it is also not straightforward as presented because reviewers were expecting us to show a slope of zero with temperature at both timescales. 
 
 Given the data we have, I think there are a few ways forward that might make it easier to grasp. These include:
 
@@ -41,9 +54,9 @@ Each have their shortcomings, which I discuss a bit below. But generally some of
 This approach is an ideal one, it is a flux, so we are comparing a flux to a flux. But it does have its shortcomings. Whole system GPP captures primary producer compartments that are not accessible to consumers. So the distribution of biomass between accessible/non-accessible producers might alter how well this captures true resource supply.
 
 ### Main Take-aways
-- GPP scales with 2P, but there are important deviations
+- GPP scales with 2$^\circ$ Production, but there are important deviations
 - Temperature is associated with these deviations
-- An apparent temperature dependence of 2P even after accounting for GPP
+- An apparent temperature dependence of 2$^\circ$ Production even after accounting for GPP
 
 --
 
@@ -51,7 +64,7 @@ Here are the temporal patterns between GPP, chla, and 2$^\circ$ production and t
 
 ![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/warming-1.png)<!-- -->![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/warming-2.png)<!-- -->
 
-There is a hint of evidence that Secondary production scales linearly with GPP, albeit these patterns are messy, as to be expected with real data. Some of these deviations at low measured GPP coincide with higher than expected 2P, but this also coincides with relatively high chlorophyll *a* biomass. Also, chlorophyll a has a messy relationship with GPP which again is expected considering the different biological components captured and wide environmental variability. But I continue with the test that P ~ [R] linearly. Below are some model attributes. And residual variation around GPP ~ 2$^\circ$ Production. For further details see [Model Output](#models). 
+There is a hint of evidence that Secondary production scales linearly with GPP, albeit these patterns are messy, as to be expected with real data. Some of these deviations at low measured GPP coincide with higher than expected 2$^\circ$ Production, but this also coincides with relatively high chlorophyll *a* biomass. Also, chlorophyll a has a messy relationship with GPP which again is expected considering the different biological components captured and wide environmental variability. But I continue with the test that P ~ [R] linearly. Below are some model attributes. And residual variation around GPP ~ 2$^\circ$ Production. For further details see [Model Output](#models). 
 
 
 
@@ -61,44 +74,14 @@ AIC of GPP + temp ~ 2$^\circ$ Production = 63.42
 
 AIC of GPP * temp ~ 2$^\circ$ Production = 63.77
 
-
 Selecting among these models suggests that temperature does add information to the model, but temperature doesn't have any interactive effect with GPP. 
 
 
 
 ![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/warming v gpp-1.png)<!-- -->
 
-Some of the residual variation suggests unaccounted for temperature dependence of ~1.3 eV. This should in theory be 0 eV.
+Some of the residual variation suggests unaccounted for temperature dependence of 1.3 eV. This should in theory be 0 eV.
 
-
-```
-## Linear mixed model fit by REML ['lmerMod']
-## Formula: .resid ~ tempkt_stand + (1 | SITE)
-##    Data: x
-## 
-## REML criterion at convergence: 54.9
-## 
-## Scaled residuals: 
-##     Min      1Q  Median      3Q     Max 
-## -1.7999 -0.4720 -0.2396  0.6378  1.9633 
-## 
-## Random effects:
-##  Groups   Name        Variance Std.Dev.
-##  SITE     (Intercept) 0.0000   0.0000  
-##  Residual             0.7527   0.8676  
-## Number of obs: 22, groups:  SITE, 2
-## 
-## Fixed effects:
-##              Estimate Std. Error t value
-## (Intercept)    1.8150     0.8307   2.185
-## tempkt_stand   1.3376     0.5969   2.241
-## 
-## Correlation of Fixed Effects:
-##             (Intr)
-## tempkt_stnd 0.975 
-## convergence code: 0
-## boundary (singular) fit: see ?isSingular
-```
 
 ```
 ##                  2.5 %    97.5 %
@@ -110,40 +93,15 @@ Some of the residual variation suggests unaccounted for temperature dependence o
 
 ## Modeling GPP in st7 & oh2
 
-This option is another way to capture the seasonal dynamics of resource production and compare estimated flux with flux and it has the advantage of being applicable across the temperature gradient. It assumes we can apply the temperature and light dependencies in st7 and oh2 across the whole gradient. But it looks like we can do a decent job of capturing the patterns of GPP in st7 and oh2 with temperature and light. I am hesistant to not include a model with chlorophyll *a*, but it appears to not do much. Further, when chlorophyll is included, the estimated GPP across the gradient is unrealistically high in Hver, peaking at ~1000 g C m^-2^ d^-1^.
+This option is another way to capture the seasonal dynamics of resource production and compare estimated flux with flux and it has the advantage of being applicable across the temperature gradient. It assumes we can apply the temperature and light dependencies in st7 and oh2 across the whole gradient. But it looks like we can do a decent job of capturing the patterns of GPP in st7 and oh2 with temperature and light. I am hesistant to not include a model with chlorophyll *a*, but it appears to not do much. Further, when chlorophyll is included, the estimated GPP across the gradient is unrealistically high in Hver, peaking at ~1000 g C m^{-2} d^{-1}.
 
-![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/gpp model-1.png)<!-- -->
-
-```
-## 
-## Call:
-## lm(formula = log(gpp_d) ~ log(mean_light) + tempkt_stand, data = warming_intdf %>% 
-##     filter(SITE %in% c("st7", "oh2")))
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -1.86942 -0.45839 -0.09648  0.58921  1.38950 
-## 
-## Coefficients:
-##                 Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)      -2.9928     1.7335  -1.726 0.098958 .  
-## log(mean_light)   0.4431     0.1142   3.879 0.000867 ***
-## tempkt_stand      1.7001     0.6774   2.510 0.020342 *  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.7968 on 21 degrees of freedom
-## Multiple R-squared:  0.7299,	Adjusted R-squared:  0.7042 
-## F-statistic: 28.37 on 2 and 21 DF,  p-value: 1.075e-06
-```
-
-![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/gpp model-2.png)<!-- -->
+![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/gpp model-1.png)<!-- -->![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/gpp model-2.png)<!-- -->
 
 This model suggests the temperature dependence of GPP, after accounting for light is ~1.7, right in line if not a bit steeper, than the estimated activation energy of secondary production from the mixed-model presented in the paper (1.3 eV). 
 
 I had two ideas about how to go from here:
 
-## Corrected within-stream Ea[2P] by estimated within-stream Ea[GPP] {#Ea_corr}
+## Correctin within-stream Ea_{2P} by estimated within-stream Ea_{GPP} {#Ea_corr}
 
 In this case, we model the temperature dependence of GPP from st7 & oh2. We then correct the slope of 2$^\circ$ production by this value as a resource-corrected temperature dependence.
 
@@ -155,17 +113,17 @@ In this case, we model the temperature dependence of GPP from st7 & oh2. We then
 
 Here I simulated variability around daily GPP by randomly generating some values based on assumed posterior distributions fit to the estimated GPP percentiles
 
-The I estimated mean daily interval GPP for simulated daily GPP-series and fit the same linear model above to estimate variability in the within-stream temperature dependence of GPP. These extracted coefficients were then used to 'correct' the estimated temperature dependence of secondary production within all streams (Ea[GPP] - Ea[2P]). This leaves the following estimates of temperature depdendence of secondary production after we account for resource turnover. 
+Then I estimated mean daily interval GPP for simulated daily GPP series and fit the same linear model above to estimate variability in the within-stream temperature dependence of GPP. These extracted coefficients were then used to 'correct' the estimated temperature dependence of secondary production within all streams (Ea[GPP] - Ea[2P]). This leaves the following estimates of temperature depdendence of secondary production after we account for resource turnover. 
 
 ![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/EA correcting-1.png)<!-- -->
 
-Here is an evolving look at Resource-corrected 2P ~ temperature:
+Here is an evolving look at Resource-corrected 2P ~ temperature, this essentially shows the estimated fixed effects of temperature 
 
 ![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/temp Ea corr-1.png)<!-- -->
 
 ## Predictive model from Warming streams {#warming_pred}
 
-Or, we can extend this model to the whole gradient, giving:
+Another possible way is to extend this model to the whole gradient, giving:
 
 ![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/gradient warming model-1.png)<!-- -->![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/gradient warming model-2.png)<!-- -->![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/gradient warming model-3.png)<!-- -->![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/gradient warming model-4.png)<!-- -->
 
@@ -173,25 +131,30 @@ Here, if we test that GPP ~ 2$^\circ$ Production linearly, we see that we estima
 
 
 ```
+## Linear mixed model fit by REML ['lmerMod']
+## Formula: log(prod_d_new/1000) ~ log(EstGPP_gCm2d_warming) + (1 | SITE)
+##    Data: warming_intdf
 ## 
-## Call:
-## lm(formula = log(prod_d_new/1000) ~ log(EstGPP_gCm2d_warming), 
-##     data = warming_intdf)
+## REML criterion at convergence: 170.8
 ## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.1492 -0.9698  0.0705  0.9770  2.2154 
+## Scaled residuals: 
+##      Min       1Q   Median       3Q      Max 
+## -2.37508 -0.62540  0.07367  0.73529  2.04967 
 ## 
-## Coefficients:
-##                           Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)               -5.00412    0.16241  -30.81  < 2e-16 ***
-## log(EstGPP_gCm2d_warming)  0.43254    0.07356    5.88 2.04e-07 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Random effects:
+##  Groups   Name        Variance Std.Dev.
+##  SITE     (Intercept) 1.1231   1.060   
+##  Residual             0.7191   0.848   
+## Number of obs: 61, groups:  SITE, 6
 ## 
-## Residual standard error: 1.264 on 59 degrees of freedom
-## Multiple R-squared:  0.3695,	Adjusted R-squared:  0.3588 
-## F-statistic: 34.57 on 1 and 59 DF,  p-value: 2.044e-07
+## Fixed effects:
+##                           Estimate Std. Error t value
+## (Intercept)               -5.14106    0.44699 -11.501
+## log(EstGPP_gCm2d_warming)  0.58294    0.08601   6.777
+## 
+## Correlation of Fixed Effects:
+##             (Intr)
+## l(EGPP_C2_) -0.057
 ```
 
 However, we find that after we acccount for resources, we cannot detect any systematic relationship with temperature across streams.
@@ -252,7 +215,7 @@ AIC of GPP * temp ~ 2$^\circ$ Production = 175.89
 
 ## Estimated GPP with Morin {#morin_pred}
 
-The Morin model predicts daily GPP with just temperature and chlorophyll *a*. It has the advantage of including chlorophyll, resource data we have across the entire gradient. I am a little skeptical about that lack of inclusion of light availability. It seems that because the model is built across latitudes, the temperature coefficients (dependence) would reflect the covariance in temp & light the exists across that latitude. I wonder if this has the potential to over estimate GPP in the winter in warmer streams here because the decoupling of the temp-light covariance. Alex suggested this might not be an issue, and represents one of many aspects that are not accounted for in such a simple model. So here it goes: 
+The Morin model predicts daily GPP with just temperature and chlorophyll *a*. It has the advantage of including chlorophyll, resource data we have across the entire gradient. I am a little skeptical about that lack of inclusion of light availability. It seems that because the model is built across latitudes, the temperature coefficients (dependence) would reflect the covariance in temp & light that exists across latitude. I wonder if this has the potential to over estimate GPP in the winter in warmer streams here because the decoupling of the temp-light covariance. Alex suggested this might not be an issue. Further, this is just one of many variables that are not accounted for in such a simple model. So here it goes: 
 
 ![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/GPP plot-1.png)<!-- -->![](C:/Users/james/Documents/Projects/Junker-et-al_TempIndependenceSecProd/docs/SecProd-revision_files/figure-html/GPP plot-2.png)<!-- -->
 
